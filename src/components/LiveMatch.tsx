@@ -45,6 +45,7 @@ const LiveMatch = () => {
   const [selectedPlayer, setSelectedPlayer] = useState<string>("");
   const [homeTimer, setHomeTimer] = useState(240); // 4 minutes in seconds
   const [awayTimer, setAwayTimer] = useState(240); // 4 minutes in seconds
+  const [weather, setWeather] = useState<string>("perfect");
 
   // Timer effect
   useEffect(() => {
@@ -149,6 +150,21 @@ const LiveMatch = () => {
               </div>
             </div>
             <div className="text-center">
+              <div className="mb-3">
+                <div className="text-xs text-muted-foreground mb-1">CLIMA</div>
+                <Select value={weather} onValueChange={setWeather}>
+                  <SelectTrigger className="w-[200px] mx-auto">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="heat">Calor Asfixiante (2)</SelectItem>
+                    <SelectItem value="sunny">Muy soleado (3)</SelectItem>
+                    <SelectItem value="perfect">Clima perfecto (4-10)</SelectItem>
+                    <SelectItem value="rainy">Lluvioso (11)</SelectItem>
+                    <SelectItem value="blizzard">Ventisca (12)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
               <div className="text-sm text-muted-foreground mb-2">TURNO</div>
               <div className="text-3xl font-bold">{currentTurn}</div>
               <div className="text-sm mt-2">
