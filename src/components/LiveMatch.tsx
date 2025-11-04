@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate, useParams } from "react-router-dom";
@@ -43,6 +43,27 @@ const LiveMatch = () => {
   const [activeTeam, setActiveTeam] = useState<'home' | 'away'>('home');
   const [events, setEvents] = useState<MatchEvent[]>([]);
   const [selectedPlayer, setSelectedPlayer] = useState<string>("");
+  const [homeTimer, setHomeTimer] = useState(240); // 4 minutes in seconds
+  const [awayTimer, setAwayTimer] = useState(240); // 4 minutes in seconds
+
+  // Timer effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (activeTeam === 'home' && homeTimer > 0) {
+        setHomeTimer(prev => prev - 1);
+      } else if (activeTeam === 'away' && awayTimer > 0) {
+        setAwayTimer(prev => prev - 1);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [activeTeam, homeTimer, awayTimer]);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
 
   // Mock players data
   const homePlayers: TeamPlayer[] = [
@@ -114,22 +135,28 @@ const LiveMatch = () => {
           {/* Scoreboard */}
           <div className="grid grid-cols-3 gap-4 items-center bg-secondary p-6 rounded-lg border-2 border-primary">
             <div className="text-center">
-              <div className="text-xl font-bold mb-2">Equipo Local</div>
+              <div className="text-xl font-bold mb-2">Nehekhara Nightmares</div>
               <div className="text-5xl font-bold text-primary">{homeScore}</div>
+              <div className={`mt-3 text-2xl font-mono font-bold ${activeTeam === 'home' ? 'text-primary' : 'text-muted-foreground'}`}>
+                {formatTime(homeTimer)}
+              </div>
             </div>
             <div className="text-center">
               <div className="text-sm text-muted-foreground mb-2">TURNO</div>
               <div className="text-3xl font-bold">{currentTurn}</div>
               <div className="text-sm mt-2">
-                Turno de: <span className="font-bold">{activeTeam === 'home' ? 'Local' : 'Visitante'}</span>
+                Turno de: <span className="font-bold">{activeTeam === 'home' ? 'Nehekhara Nightmares' : 'Brionne Barons'}</span>
               </div>
               <Button onClick={nextTurn} className="mt-4">
                 Siguiente Turno
               </Button>
             </div>
             <div className="text-center">
-              <div className="text-xl font-bold mb-2">Equipo Visitante</div>
+              <div className="text-xl font-bold mb-2">Brionne Barons</div>
               <div className="text-5xl font-bold text-primary">{awayScore}</div>
+              <div className={`mt-3 text-2xl font-mono font-bold ${activeTeam === 'away' ? 'text-primary' : 'text-muted-foreground'}`}>
+                {formatTime(awayTimer)}
+              </div>
             </div>
           </div>
         </div>
@@ -146,14 +173,14 @@ const LiveMatch = () => {
                   <SelectTrigger>
                     <SelectValue placeholder="Elige un jugador" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <div className="font-bold p-2 text-xs">Equipo Local</div>
+                   <SelectContent>
+                    <div className="font-bold p-2 text-xs">Nehekhara Nightmares</div>
                     {homePlayers.map(player => (
                       <SelectItem key={player.id} value={player.id}>
                         #{player.number} - {player.name}
                       </SelectItem>
                     ))}
-                    <div className="font-bold p-2 text-xs border-t mt-2">Equipo Visitante</div>
+                    <div className="font-bold p-2 text-xs border-t mt-2">Brionne Barons</div>
                     {awayPlayers.map(player => (
                       <SelectItem key={player.id} value={player.id}>
                         #{player.number} - {player.name}
@@ -232,7 +259,7 @@ const LiveMatch = () => {
                       <div className="flex justify-between items-start">
                         <div>
                           <div className="font-bold">
-                            Turno {event.turn} - {event.team === 'home' ? 'Local' : 'Visitante'}
+                            Turno {event.turn} - {event.team === 'home' ? 'Nehekhara Nightmares' : 'Brionne Barons'}
                           </div>
                           <div className="text-sm">
                             {event.description} - Jugador: {event.player}
@@ -253,7 +280,7 @@ const LiveMatch = () => {
         {/* Player Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
           <Card className="p-4 bb-content-area">
-            <h3 className="text-lg font-bold mb-3">Equipo Local - Estadísticas</h3>
+            <h3 className="text-lg font-bold mb-3">Nehekhara Nightmares - Estadísticas</h3>
             <div className="space-y-2">
               {homePlayers.map((player) => (
                 <div key={player.id} className="flex justify-between items-center p-2 bg-secondary rounded">
@@ -269,7 +296,7 @@ const LiveMatch = () => {
           </Card>
 
           <Card className="p-4 bb-content-area">
-            <h3 className="text-lg font-bold mb-3">Equipo Visitante - Estadísticas</h3>
+            <h3 className="text-lg font-bold mb-3">Brionne Barons - Estadísticas</h3>
             <div className="space-y-2">
               {awayPlayers.map((player) => (
                 <div key={player.id} className="flex justify-between items-center p-2 bg-secondary rounded">
