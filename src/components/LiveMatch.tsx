@@ -107,6 +107,13 @@ const LiveMatch = () => {
   };
 
   const nextTurn = () => {
+    // Reset timer for the team that just finished their turn
+    if (activeTeam === 'home') {
+      setHomeTimer(240);
+    } else {
+      setAwayTimer(240);
+    }
+    
     setCurrentTurn(currentTurn + 1);
     setActiveTeam(activeTeam === 'home' ? 'away' : 'home');
     toast.info(`Turno ${currentTurn + 1} - ${activeTeam === 'home' ? 'Equipo visitante' : 'Equipo local'}`);
