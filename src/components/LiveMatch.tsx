@@ -46,6 +46,8 @@ const LiveMatch = () => {
   const [homeTimer, setHomeTimer] = useState(240); // 4 minutes in seconds
   const [awayTimer, setAwayTimer] = useState(240); // 4 minutes in seconds
   const [weather, setWeather] = useState<string>("perfect");
+  const [homeStats, setHomeStats] = useState({ casualties: 0, fans: 0, income: 0 });
+  const [awayStats, setAwayStats] = useState({ casualties: 0, fans: 0, income: 0 });
 
   // Timer effect
   useEffect(() => {
@@ -148,6 +150,20 @@ const LiveMatch = () => {
               <div className={`mt-3 text-2xl font-mono font-bold ${activeTeam === 'home' ? 'text-primary' : 'text-muted-foreground'}`}>
                 {formatTime(homeTimer)}
               </div>
+              <div className="mt-4 space-y-1 text-sm">
+                <div className="flex justify-between px-4">
+                  <span className="text-muted-foreground">Bajas Causadas:</span>
+                  <span className="font-bold">{homeStats.casualties}</span>
+                </div>
+                <div className="flex justify-between px-4">
+                  <span className="text-muted-foreground">Hinchas:</span>
+                  <span className="font-bold">{homeStats.fans}</span>
+                </div>
+                <div className="flex justify-between px-4">
+                  <span className="text-muted-foreground">Recaudación:</span>
+                  <span className="font-bold">{homeStats.income}k</span>
+                </div>
+              </div>
             </div>
             <div className="text-center">
               <div className="mb-3">
@@ -179,6 +195,20 @@ const LiveMatch = () => {
               <div className="text-5xl font-bold text-primary">{awayScore}</div>
               <div className={`mt-3 text-2xl font-mono font-bold ${activeTeam === 'away' ? 'text-primary' : 'text-muted-foreground'}`}>
                 {formatTime(awayTimer)}
+              </div>
+              <div className="mt-4 space-y-1 text-sm">
+                <div className="flex justify-between px-4">
+                  <span className="text-muted-foreground">Bajas Causadas:</span>
+                  <span className="font-bold">{awayStats.casualties}</span>
+                </div>
+                <div className="flex justify-between px-4">
+                  <span className="text-muted-foreground">Hinchas:</span>
+                  <span className="font-bold">{awayStats.fans}</span>
+                </div>
+                <div className="flex justify-between px-4">
+                  <span className="text-muted-foreground">Recaudación:</span>
+                  <span className="font-bold">{awayStats.income}k</span>
+                </div>
               </div>
             </div>
           </div>
