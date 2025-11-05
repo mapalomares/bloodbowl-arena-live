@@ -10,8 +10,8 @@ const Landing = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    // TODO: Implement login logic
-    navigate("/");
+    // TODO: Implement login logic with validation
+    navigate("/dashboard");
   };
 
   return (
