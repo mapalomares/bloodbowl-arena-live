@@ -14,49 +14,56 @@ const Dashboard = () => {
   };
 
   const myLeagues = [
-    { name: "La Secta Primera Edición", icon: "🏆" },
-    { name: "Paloleague Primera Edición", icon: "🏆" },
-    { name: "Liga Laberinto XXI Edición", icon: "🏆" },
-    { name: "VillaverdeBowl XXIII Edition", icon: "🏆" },
+    { id: "1", name: "La Secta Primera Edición", icon: "🏆" },
+    { id: "2", name: "Paloleague Primera Edición", icon: "🏆" },
+    { id: "3", name: "Liga Laberinto XXI Edición", icon: "🏆" },
+    { id: "4", name: "VillaverdeBowl XXIII Edition", icon: "🏆" },
   ];
 
   const commissionerLeagues = [
-    { name: "La Secta Primera Edición", icon: "🏆" },
-    { name: "Paloleague Primera Edición", icon: "🏆" },
+    { id: "1", name: "La Secta Primera Edición", icon: "🏆" },
+    { id: "2", name: "Paloleague Primera Edición", icon: "🏆" },
   ];
 
   const allLeagues = [
     { 
+      id: "5",
       name: "Liga Sansera La nueva era. la edición", 
       subtitle: "Nueva edición",
       icon: "🏆" 
     },
     { 
+      id: "6",
       name: "VillaverdeBowl Clanes Skavens", 
       subtitle: "Miniliga de prueba de los clanes skavens",
       icon: "🏆" 
     },
     { 
+      id: "7",
       name: "VillaverdeBowl ChaosCup", 
       subtitle: "El dominio del Kaos",
       icon: "🏆" 
     },
     { 
+      id: "8",
       name: "Dalebowl Dalebowl V", 
       subtitle: "",
       icon: "🏆" 
     },
     { 
+      id: "9",
       name: "VillaverdeBowl X Edición", 
       subtitle: "X Edición",
       icon: "🏆" 
     },
     { 
+      id: "10",
       name: "Liga Rememoradores Primera Edición", 
       subtitle: "",
       icon: "🏆" 
     },
     { 
+      id: "11",
       name: "Northern Knights Bloodbowl League NKBL 12-B", 
       subtitle: "",
       icon: "🏆" 
@@ -148,7 +155,11 @@ const Dashboard = () => {
               </h3>
               <div className="space-y-2">
                 {myLeagues.map((league, index) => (
-                  <div key={index} className="flex items-center gap-2 px-3 py-2 hover:bg-muted/50 rounded cursor-pointer">
+                  <div 
+                    key={index} 
+                    className="flex items-center gap-2 px-3 py-2 hover:bg-muted/50 rounded cursor-pointer"
+                    onClick={() => navigate(`/liga/${league.id}`)}
+                  >
                     <span>{league.icon}</span>
                     <span className="text-primary font-bold">{league.name}</span>
                   </div>
@@ -163,7 +174,11 @@ const Dashboard = () => {
               </h3>
               <div className="space-y-2">
                 {commissionerLeagues.map((league, index) => (
-                  <div key={index} className="flex items-center gap-2 px-3 py-2 hover:bg-muted/50 rounded cursor-pointer">
+                  <div 
+                    key={index} 
+                    className="flex items-center gap-2 px-3 py-2 hover:bg-muted/50 rounded cursor-pointer"
+                    onClick={() => navigate(`/liga/${league.id}`)}
+                  >
                     <span>{league.icon}</span>
                     <span className="text-primary font-bold">{league.name}</span>
                   </div>
@@ -182,7 +197,10 @@ const Dashboard = () => {
               <div className="space-y-3">
                 {allLeagues.map((league, index) => (
                   <div key={index} className="border-b border-primary/20 last:border-0 pb-3 last:pb-0">
-                    <div className="flex items-start gap-2 cursor-pointer hover:bg-muted/30 p-2 rounded">
+                    <div 
+                      className="flex items-start gap-2 cursor-pointer hover:bg-muted/30 p-2 rounded"
+                      onClick={() => navigate(`/liga/${league.id}`)}
+                    >
                       <span className="text-xl">{league.icon}</span>
                       <div>
                         <div className="text-primary font-bold">{league.name}</div>
