@@ -1,7 +1,7 @@
-import MatchList from "@/components/MatchList";
+import Landing from "@/components/Landing";
 
 const Index = () => {
-  return <MatchList />;
+  return <Landing />;
 };
 
 export default Index;
