@@ -336,7 +336,7 @@ const LeagueDetail = () => {
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((j) => (
                 <button
                   key={j}
-                  className={`mx-1 px-2 py-1 ${j === 1 ? 'font-bold text-primary' : 'text-muted-foreground hover:text-primary'}`}
+                  className={`mx-1 px-2 py-1 ${j === 4 ? 'font-bold text-primary' : 'text-muted-foreground hover:text-primary'}`}
                 >
                   {j}
                 </button>
@@ -346,26 +346,93 @@ const LeagueDetail = () => {
             {/* Matchday Content */}
             <div className="bb-content-area">
               <h4 className="text-2xl md:text-3xl font-bold text-center mb-4 py-3 bg-muted rounded" style={{ fontFamily: 'Georgia, serif' }}>
-                JORNADA 1 <span className="text-sm text-muted-foreground ml-2">(09/10/25-18/10/25)</span>
+                JORNADA 4 <span className="text-sm text-muted-foreground ml-2">(04/11/2025-09/11/2025)</span>
               </h4>
 
               {/* Matches Table */}
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <tbody>
+                    {/* Match 1 - Completed */}
                     <tr className="bb-table-row hover:bg-muted/50">
                       <td className="py-3 px-2 text-center w-16">
                         <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
                       </td>
                       <td className="py-3 px-2 text-right">
-                        <div className="text-primary font-bold">Varangus Komodoranus</div>
-                        <div className="text-xs text-muted-foreground">Zkikitita (DALD)</div>
+                        <div className="text-primary font-bold">Almadén Pascasios</div>
+                        <div className="text-xs text-muted-foreground">Otis (DALO)</div>
                       </td>
-                      <td className="py-3 px-2 text-center font-bold text-xl w-16">0</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">-</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">-</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">Varangus komodoranus</div>
+                        <div className="text-xs text-muted-foreground">Zelikitita (DALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <div className="space-y-1">
+                          <div className="text-primary hover:underline font-bold cursor-pointer">Generar pdf de acta</div>
+                          <div className="text-primary hover:underline font-bold cursor-pointer">Introducir acta</div>
+                          <Button 
+                            onClick={() => navigate(`/partido/4-1`)}
+                            size="sm"
+                            className="w-full font-bold text-xs"
+                          >
+                            Jugar partido
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    {/* Match 2 - Pending */}
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Tomb Kings</div>
+                        <div className="text-xs text-muted-foreground">SPJKE (DALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">-</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">-</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">Farrar Sona</div>
+                        <div className="text-xs text-muted-foreground">dr crosss (DALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <div className="space-y-1">
+                          <div className="text-primary hover:underline font-bold cursor-pointer">Generar pdf de acta</div>
+                          <div className="text-primary hover:underline font-bold cursor-pointer">Introducir acta</div>
+                          <Button 
+                            onClick={() => navigate(`/partido/4-2`)}
+                            size="sm"
+                            className="w-full font-bold text-xs"
+                          >
+                            Jugar partido
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    {/* Match 3 - Completed */}
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Sylvanian Streetfighthuggers</div>
+                        <div className="text-xs text-muted-foreground">Shaman (ALLS)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">2</td>
                       <td className="py-3 px-2 text-center font-bold text-xl w-16">0</td>
                       <td className="py-3 px-2 text-left">
-                        <div className="text-primary font-bold">Sakianne (ALDI-LADI)</div>
-                        <div className="text-xs text-muted-foreground">elhombresooge (AELS)</div>
+                        <div className="text-primary font-bold">Peñeroclus</div>
+                        <div className="text-xs text-muted-foreground">penegrecito (DALD)</div>
                       </td>
                       <td className="py-3 px-2 text-center w-16">
                         <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
@@ -374,40 +441,179 @@ const LeagueDetail = () => {
                         <a href="#" className="text-primary hover:underline font-bold">Ver acta</a>
                       </td>
                     </tr>
+
+                    {/* Match 4 - Completed */}
                     <tr className="bb-table-row hover:bg-muted/50">
                       <td className="py-3 px-2 text-center w-16">
                         <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
                       </td>
                       <td className="py-3 px-2 text-right">
-                        <div className="text-primary font-bold">Bacterias fecales</div>
-                        <div className="text-xs text-muted-foreground">Morgano (DALD)</div>
+                        <div className="text-primary font-bold">Irazma Kamikaze</div>
+                        <div className="text-xs text-muted-foreground">Harry (DALD)</div>
                       </td>
                       <td className="py-3 px-2 text-center font-bold text-xl w-16">1</td>
                       <td className="py-3 px-2 text-center font-bold text-xl w-16">1</td>
                       <td className="py-3 px-2 text-left">
-                        <div className="text-primary font-bold">Repartidorez Valdikanoz</div>
-                        <div className="text-xs text-muted-foreground">Tio_Sam (AELS)</div>
-                      </td>
-                      <td className="py-3 px-2 text-center w-16">
-                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
-                      </td>
-                      <td className="py-3 px-2 text-center">
-                        <a href="#" className="text-primary hover:underline font-bold">Ver acta</a>
-                      </td>
-                    </tr>
-                    <tr className="bb-table-row hover:bg-muted/50">
-                      <td className="py-3 px-2 text-center w-16">
-                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
-                      </td>
-                      <td className="py-3 px-2 text-right">
                         <div className="text-primary font-bold">Killing me softly with listro</div>
                         <div className="text-xs text-muted-foreground">Verch (AELS)</div>
                       </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <a href="#" className="text-primary hover:underline font-bold">Ver acta</a>
+                      </td>
+                    </tr>
+
+                    {/* Match 5 - Pending */}
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Peñafrita's Herd</div>
+                        <div className="text-xs text-muted-foreground">LOBERAS (DELD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">-</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">-</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">Bacterias fecales</div>
+                        <div className="text-xs text-muted-foreground">Morgano (GALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <div className="space-y-1">
+                          <div className="text-primary hover:underline font-bold cursor-pointer">Generar pdf de acta</div>
+                          <div className="text-primary hover:underline font-bold cursor-pointer">Introducir acta</div>
+                          <Button 
+                            onClick={() => navigate(`/partido/4-5`)}
+                            size="sm"
+                            className="w-full font-bold text-xs"
+                          >
+                            Jugar partido
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    {/* Match 6 - Pending */}
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Los Blancitos y refrasaslitos</div>
+                        <div className="text-xs text-muted-foreground">sneky (GALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">-</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">-</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">Sakianne (2001-2023)</div>
+                        <div className="text-xs text-muted-foreground">elhombreboogie (AELS)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <div className="space-y-1">
+                          <div className="text-primary hover:underline font-bold cursor-pointer">Generar pdf de acta</div>
+                          <div className="text-primary hover:underline font-bold cursor-pointer">Introducir acta</div>
+                          <Button 
+                            onClick={() => navigate(`/partido/4-6`)}
+                            size="sm"
+                            className="w-full font-bold text-xs"
+                          >
+                            Jugar partido
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    {/* Match 7 - Completed */}
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Gutssellos</div>
+                        <div className="text-xs text-muted-foreground">Donde lirrico (DALD)</div>
+                      </td>
                       <td className="py-3 px-2 text-center font-bold text-xl w-16">1</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">2</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">Repartidorez Valdikanoz</div>
+                        <div className="text-xs text-muted-foreground">Tio_Sam (OLDS)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <a href="#" className="text-primary hover:underline font-bold">Ver acta</a>
+                      </td>
+                    </tr>
+
+                    {/* Match 8 - Completed */}
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Llictronos de Llavomeda</div>
+                        <div className="text-xs text-muted-foreground">Emiladus (DALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">0</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">2</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">koko-doki Shinpu</div>
+                        <div className="text-xs text-muted-foreground">Blues (GALS)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <a href="#" className="text-primary hover:underline font-bold">Ver acta</a>
+                      </td>
+                    </tr>
+
+                    {/* Match 9 - Completed */}
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Estalaxinos de parranda</div>
+                        <div className="text-xs text-muted-foreground">Sosu (GALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">2</td>
                       <td className="py-3 px-2 text-center font-bold text-xl w-16">0</td>
                       <td className="py-3 px-2 text-left">
-                        <div className="text-primary font-bold">Gutssellos</div>
-                        <div className="text-xs text-muted-foreground">Donde lirres (APALD)</div>
+                        <div className="text-primary font-bold">Nunnrgla-kong</div>
+                        <div className="text-xs text-muted-foreground">gorrrra (DALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <a href="#" className="text-primary hover:underline font-bold">Ver acta</a>
+                      </td>
+                    </tr>
+
+                    {/* Match 10 - Completed */}
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Geckos del Druchu Harassers</div>
+                        <div className="text-xs text-muted-foreground">Jevins (DALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">1</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">2</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">Golftale n.0</div>
+                        <div className="text-xs text-muted-foreground">tirkha (DALS)</div>
                       </td>
                       <td className="py-3 px-2 text-center w-16">
                         <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
@@ -545,63 +751,80 @@ const LeagueDetail = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <div>
-                  <label className="block mb-2 font-bold">Nombre de liga</label>
-                  <input type="text" className="w-full p-2 border rounded" />
+                  <label className="block mb-2 font-bold">Nombre de liga:</label>
+                  <input 
+                    type="text" 
+                    className="w-full p-2 border rounded bg-background" 
+                    defaultValue="XXIII Edition"
+                  />
                 </div>
                 <div>
-                  <label className="block mb-2 font-bold">Estado de la liga</label>
-                  <select className="w-full p-2 border rounded">
+                  <label className="block mb-2 font-bold">Estado de la liga:</label>
+                  <select className="w-full p-2 border rounded bg-background">
                     <option>En juego</option>
+                    <option>Terminada</option>
+                    <option>Inscripción</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block mb-2 font-bold">Comisarios</label>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <input type="checkbox" id="coach1" defaultChecked />
-                      <label htmlFor="coach1">tirkha</label>
+                  <label className="block mb-2 font-bold">Comisarios:</label>
+                  <div className="space-y-2 bg-background p-3 rounded border">
+                    <div className="flex items-center justify-between">
+                      <span>tirkha</span>
+                      <button className="text-destructive hover:underline text-sm">🗑️</button>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <input type="checkbox" id="coach2" />
-                      <label htmlFor="coach2">de crisma</label>
+                    <div className="flex items-center justify-between">
+                      <span>dr crosss</span>
+                      <button className="text-destructive hover:underline text-sm">🗑️</button>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <input type="checkbox" id="coach3" />
-                      <label htmlFor="coach3">desatheres</label>
+                    <div className="flex items-center justify-between">
+                      <span>devilstree</span>
+                      <button className="text-destructive hover:underline text-sm">🗑️</button>
                     </div>
-                    <a href="#" className="text-primary hover:underline text-sm">Añadir nuevo comisario</a>
+                    <a href="#" className="text-primary hover:underline text-sm block mt-2">Añadir nuevo comisario</a>
                   </div>
+                </div>
+                <div>
+                  <label className="block mb-2 font-bold">Reglamento:</label>
+                  <select className="w-full p-2 border rounded bg-background">
+                    <option>Season 3 Glastheim</option>
+                    <option>Season 2</option>
+                    <option>Season 1</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block mb-2 font-bold">Sistema de puntuación:</label>
+                  <input 
+                    type="text" 
+                    className="w-full p-2 border rounded bg-background" 
+                    defaultValue="3x1x0"
+                  />
                 </div>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block mb-2 font-bold">Reglamento</label>
-                  <select className="w-full p-2 border rounded">
-                    <option>Duneau 1 SEASON</option>
+                  <label className="block mb-2 font-bold">Sistema de desempate:</label>
+                  <select className="w-full p-2 border rounded bg-background">
+                    <option>1=TDP-TDC+P-E en las partidas entre los +</option>
+                    <option>TDP-TDC</option>
+                    <option>Diferencia de touchdowns</option>
+                  </select>
+                  <select className="w-full p-2 border rounded bg-background mt-2">
+                    <option>2=TDP-TDC+P-E</option>
+                    <option>TDP total</option>
+                  </select>
+                  <select className="w-full p-2 border rounded bg-background mt-2">
+                    <option>3=P-E (que ligeros)</option>
+                    <option>Diferencia general</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block mb-2 font-bold">Sistema de puntuación</label>
-                  <select className="w-full p-2 border rounded">
-                    <option>3x0 - Win=3pts en los partidos esta liga 1</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block mb-2 font-bold">Sistema de desempate</label>
-                  <select className="w-full p-2 border rounded">
-                    <option>1=TD5, 2DEF=DE</option>
-                  </select>
-                  <select className="w-full p-2 border rounded mt-2">
-                    <option>TD5 TD5 Lo al hernol</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block mb-2 font-bold">MVP asignable</label>
+                  <label className="block mb-2 font-bold">MVP sorteable:</label>
                   <div className="flex gap-4">
                     <label className="flex items-center gap-2">
                       <input type="radio" name="mvp" value="yes" defaultChecked />
-                      SÍ/Sí
+                      Sí/Sí
                     </label>
                     <label className="flex items-center gap-2">
                       <input type="radio" name="mvp" value="no" />
@@ -610,8 +833,12 @@ const LeagueDetail = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="block mb-2 font-bold">% casual</label>
-                  <input type="text" className="w-full p-2 border rounded" defaultValue="mmm" />
+                  <label className="block mb-2 font-bold">TR inicial:</label>
+                  <input 
+                    type="text" 
+                    className="w-full p-2 border rounded bg-background" 
+                    defaultValue="1000000"
+                  />
                 </div>
               </div>
             </div>
