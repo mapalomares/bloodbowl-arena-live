@@ -325,30 +325,296 @@ const LeagueDetail = () => {
         )}
 
         {activeTab === 'resultados' && (
-          <div className="bb-content-area">
-            <h3 className="text-2xl font-bold mb-4">Resultados y Partidos</h3>
-            <p className="text-muted-foreground">Contenido de resultados y partidos...</p>
+          <div>
+            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-primary" style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}>
+              Resultados y partidos
+            </h3>
+
+            {/* Jornadas Navigation */}
+            <div className="mb-6 text-center">
+              <span className="mr-3 font-bold">JORNADA</span>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((j) => (
+                <button
+                  key={j}
+                  className={`mx-1 px-2 py-1 ${j === 1 ? 'font-bold text-primary' : 'text-muted-foreground hover:text-primary'}`}
+                >
+                  {j}
+                </button>
+              ))}
+            </div>
+
+            {/* Matchday Content */}
+            <div className="bb-content-area">
+              <h4 className="text-2xl md:text-3xl font-bold text-center mb-4 py-3 bg-muted rounded" style={{ fontFamily: 'Georgia, serif' }}>
+                JORNADA 1 <span className="text-sm text-muted-foreground ml-2">(09/10/25-18/10/25)</span>
+              </h4>
+
+              {/* Matches Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <tbody>
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Varangus Komodoranus</div>
+                        <div className="text-xs text-muted-foreground">Zkikitita (DALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">0</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">0</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">Sakianne (ALDI-LADI)</div>
+                        <div className="text-xs text-muted-foreground">elhombresooge (AELS)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <a href="#" className="text-primary hover:underline font-bold">Ver acta</a>
+                      </td>
+                    </tr>
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Bacterias fecales</div>
+                        <div className="text-xs text-muted-foreground">Morgano (DALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">1</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">1</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">Repartidorez Valdikanoz</div>
+                        <div className="text-xs text-muted-foreground">Tio_Sam (AELS)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <a href="#" className="text-primary hover:underline font-bold">Ver acta</a>
+                      </td>
+                    </tr>
+                    <tr className="bb-table-row hover:bg-muted/50">
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-right">
+                        <div className="text-primary font-bold">Killing me softly with listro</div>
+                        <div className="text-xs text-muted-foreground">Verch (AELS)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">1</td>
+                      <td className="py-3 px-2 text-center font-bold text-xl w-16">0</td>
+                      <td className="py-3 px-2 text-left">
+                        <div className="text-primary font-bold">Gutssellos</div>
+                        <div className="text-xs text-muted-foreground">Donde lirres (APALD)</div>
+                      </td>
+                      <td className="py-3 px-2 text-center w-16">
+                        <div className="w-12 h-12 bg-muted rounded mx-auto"></div>
+                      </td>
+                      <td className="py-3 px-2 text-center">
+                        <a href="#" className="text-primary hover:underline font-bold">Ver acta</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         )}
 
         {activeTab === 'playoffs' && (
-          <div className="bb-content-area">
-            <h3 className="text-2xl font-bold mb-4">Playoffs</h3>
-            <p className="text-muted-foreground">Contenido de playoffs...</p>
+          <div className="bb-content-area min-h-[400px]">
+            <div className="text-center py-12">
+              <div className="mb-8">
+                <img src={logo} alt="Andando Logo" className="h-16 mx-auto mb-4" />
+                <p className="text-sm font-bold mb-2">Powered by Andando</p>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-center gap-4 mb-4">
+                  <a href="#" className="text-primary hover:underline">TÉRMINOS DEL SERVICIO</a>
+                  <span>|</span>
+                  <a href="#" className="text-primary hover:underline">CONTACTO</a>
+                  <span>|</span>
+                  <a href="#" className="text-primary hover:underline">REGISTRO</a>
+                </div>
+                <p className="text-xs text-muted-foreground">Andando © Todos los derechos reservados</p>
+                <p className="text-xs font-bold uppercase mt-4">
+                  EL MEJOR GESTOR DE LIGAS IDEALJMANA JAFFERMAMOS AL FÚTBOL DE TABLERO TIPO BLOOD BOWL
+                </p>
+              </div>
+            </div>
           </div>
         )}
 
         {activeTab === 'halloffame' && (
-          <div className="bb-content-area">
-            <h3 className="text-2xl font-bold mb-4">Hall of Fame</h3>
-            <p className="text-muted-foreground">Contenido de hall of fame...</p>
+          <div>
+            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-primary" style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}>
+              Hall of Fame
+            </h3>
+
+            <div className="bb-content-area">
+              {/* Tabs */}
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                <div className="text-center py-2 bg-muted rounded font-bold border-2 border-primary">
+                  Por jugadores
+                </div>
+                <div className="text-center py-2 bg-background rounded font-bold border-2 border-muted cursor-pointer hover:bg-muted/50">
+                  Por equipos
+                </div>
+              </div>
+
+              {/* Sub-tabs */}
+              <div className="grid grid-cols-3 gap-2 mb-6">
+                <div className="text-center py-2 bg-muted rounded text-sm font-bold">
+                  Liga actual
+                </div>
+                <div className="text-center py-2 bg-background rounded text-sm font-bold cursor-pointer hover:bg-muted/50 text-primary">
+                  Fuera de la liga
+                </div>
+                <div className="text-center py-2 bg-background rounded text-sm font-bold cursor-pointer hover:bg-muted/50">
+                  Todos las ligas
+                </div>
+              </div>
+
+              {/* Best Players Title */}
+              <h4 className="text-xl font-bold text-center mb-4 py-2 bg-muted rounded" style={{ fontFamily: 'Georgia, serif' }}>
+                MEJORES JUGADORES
+              </h4>
+
+              {/* Players Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b-2 border-primary">
+                      <th className="py-2 px-2 text-center font-bold">POS</th>
+                      <th className="py-2 px-2 text-center font-bold">LOGO</th>
+                      <th className="py-2 px-2 text-left font-bold">JUGADOR</th>
+                      <th className="py-2 px-2 text-center font-bold">PUNTOS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { pos: 1, player: "Jugador 1 - Línea Eslizón", team: "Chatnoil Uzzuults (Hombres Lagarto)", points: 10 },
+                      { pos: 2, player: "Subiendo - Troll Enfurrado", team: "Bacterias fecales (Gnollmgo)", points: 8 },
+                      { pos: 3, player: "Jugador 7 - Vidramo", team: "Farrar Sano (Alanos Gilesoli)", points: 7 },
+                      { pos: 4, player: "Jugador 6 - Corredor de Alcantarillas", team: "kazima Kiamilkaze (Skavens)", points: 7 },
+                      { pos: 5, player: "Omu - Corredor de Alcantarillas", team: "koko-doki Shappo (Skavens)", points: 7 },
+                      { pos: 6, player: "Plai - Pelotare Guerrero", team: "Gutssellos (Elfos Silvanos)", points: 7 },
+                      { pos: 7, player: "Jumgeo - Merodano", team: "Peñafrita's Herd (Elegidos del Caos)", points: 7 },
+                      { pos: 8, player: "Gencho Olarkis - Guerrero de Nurgle", team: "Mammelfackey (Nurgle)", points: 6 },
+                    ].map((player, index) => (
+                      <tr key={index} className="bb-table-row hover:bg-muted/50">
+                        <td className="py-2 px-2 text-center font-bold">{player.pos}</td>
+                        <td className="py-2 px-2 text-center">
+                          <div className="w-8 h-8 bg-muted rounded mx-auto"></div>
+                        </td>
+                        <td className="py-2 px-2">
+                          <div className="text-primary font-bold">{player.player}</div>
+                          <div className="text-xs text-muted-foreground">{player.team}</div>
+                        </td>
+                        <td className="py-2 px-2 text-center font-bold">{player.points}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         )}
 
         {activeTab === 'comisario' && (
           <div className="bb-content-area">
-            <h3 className="text-2xl font-bold mb-4">Panel de Comisario</h3>
-            <p className="text-muted-foreground">Contenido del panel de comisario...</p>
+            {/* Commissioner Tabs */}
+            <div className="grid grid-cols-4 gap-1 mb-6" style={{ borderBottom: '2px solid hsl(var(--primary))' }}>
+              <div className="text-center py-3 bg-muted font-bold border-l-4 border-primary">
+                GENERAL
+              </div>
+              <div className="text-center py-3 bg-background font-bold cursor-pointer hover:bg-muted/50">
+                EQUIPOS
+              </div>
+              <div className="text-center py-3 bg-background font-bold cursor-pointer hover:bg-muted/50">
+                NOTIFICACIONES
+              </div>
+              <div className="text-center py-3 bg-background font-bold cursor-pointer hover:bg-muted/50">
+                PLAYOFFS
+              </div>
+            </div>
+
+            {/* Commissioner Form */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <div>
+                  <label className="block mb-2 font-bold">Nombre de liga</label>
+                  <input type="text" className="w-full p-2 border rounded" />
+                </div>
+                <div>
+                  <label className="block mb-2 font-bold">Estado de la liga</label>
+                  <select className="w-full p-2 border rounded">
+                    <option>En juego</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block mb-2 font-bold">Comisarios</label>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" id="coach1" defaultChecked />
+                      <label htmlFor="coach1">tirkha</label>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" id="coach2" />
+                      <label htmlFor="coach2">de crisma</label>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" id="coach3" />
+                      <label htmlFor="coach3">desatheres</label>
+                    </div>
+                    <a href="#" className="text-primary hover:underline text-sm">Añadir nuevo comisario</a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block mb-2 font-bold">Reglamento</label>
+                  <select className="w-full p-2 border rounded">
+                    <option>Duneau 1 SEASON</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block mb-2 font-bold">Sistema de puntuación</label>
+                  <select className="w-full p-2 border rounded">
+                    <option>3x0 - Win=3pts en los partidos esta liga 1</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block mb-2 font-bold">Sistema de desempate</label>
+                  <select className="w-full p-2 border rounded">
+                    <option>1=TD5, 2DEF=DE</option>
+                  </select>
+                  <select className="w-full p-2 border rounded mt-2">
+                    <option>TD5 TD5 Lo al hernol</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block mb-2 font-bold">MVP asignable</label>
+                  <div className="flex gap-4">
+                    <label className="flex items-center gap-2">
+                      <input type="radio" name="mvp" value="yes" defaultChecked />
+                      SÍ/Sí
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="radio" name="mvp" value="no" />
+                      No
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <label className="block mb-2 font-bold">% casual</label>
+                  <input type="text" className="w-full p-2 border rounded" defaultValue="mmm" />
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>
