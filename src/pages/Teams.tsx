@@ -36,6 +36,15 @@ const Teams = () => {
   const [rulebook, setRulebook] = useState("");
   const [race, setRace] = useState("");
   const [initialTR, setInitialTR] = useState("10000");
+  const [showRoster, setShowRoster] = useState(true);
+
+  const woodElfRoster = [
+    { qty: "0/12", position: "Wood Elf Lineman", cost: "70.000", ma: "7", st: "3", ag: "2+", pa: "4+", av: "8+", skills: "", primary: "AG", secondary: "S" },
+    { qty: "0/2", position: "Wood Elf Thrower", cost: "95.000", ma: "7", st: "3", ag: "2+", pa: "2+", av: "8+", skills: "Pass", primary: "AGP", secondary: "S" },
+    { qty: "0/4", position: "Wood Elf Catcher", cost: "90.000", ma: "8", st: "2", ag: "2+", pa: "4+", av: "8+", skills: "Catch, Dodge", primary: "AG", secondary: "PS" },
+    { qty: "0/2", position: "Wardancer", cost: "125.000", ma: "8", st: "3", ag: "2+", pa: "4+", av: "8+", skills: "Block, Dodge, Leap", primary: "AG", secondary: "PS" },
+    { qty: "0/1", position: "Loren Forest Treeman", cost: "120.000", ma: "2", st: "6", ag: "5+", pa: "5+", av: "11+", skills: "Loner (4+), Mighty Blow (+1), Stand Firm, Strong Arm, Take Root, Thick Skull, Throw Team-mate", primary: "S", secondary: "AG" },
+  ];
 
   const handleLogout = () => {
     navigate("/");
@@ -289,6 +298,7 @@ const Teams = () => {
                         <SelectValue placeholder="Escoge un reglamento" />
                       </SelectTrigger>
                       <SelectContent className="bg-card border-2 border-primary z-50">
+                        <SelectItem value="tercera-edicion">Tercera Edición</SelectItem>
                         <SelectItem value="lbr-6.0">LBR 6.0</SelectItem>
                         <SelectItem value="lbr-5.0">LBR 5.0</SelectItem>
                         <SelectItem value="bb-2020">Blood Bowl 2020</SelectItem>
@@ -307,6 +317,7 @@ const Teams = () => {
                         <SelectValue placeholder="Escoge una raza" />
                       </SelectTrigger>
                       <SelectContent className="bg-card border-2 border-primary z-50 max-h-[300px]">
+                        <SelectItem value="elfos-silvanos">Elfos Silvanos</SelectItem>
                         <SelectItem value="humanos">Humanos</SelectItem>
                         <SelectItem value="orcos">Orcos</SelectItem>
                         <SelectItem value="elfos">Elfos</SelectItem>
@@ -333,6 +344,60 @@ const Teams = () => {
                     />
                   </div>
                 </div>
+
+                {/* Wood Elf Roster Table */}
+                {rulebook === "tercera-edicion" && race === "elfos-silvanos" && (
+                  <div className="space-y-2">
+                    <div 
+                      className="flex items-center gap-2 cursor-pointer"
+                      onClick={() => setShowRoster(!showRoster)}
+                    >
+                      <h3 className="text-lg font-bold" style={{ fontFamily: 'Georgia, serif' }}>
+                        Wood Elf Team Players
+                      </h3>
+                      <span className="text-sm">{showRoster ? "▲" : "▼"}</span>
+                    </div>
+
+                    {showRoster && (
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse text-sm">
+                          <thead>
+                            <tr className="bg-destructive text-destructive-foreground">
+                              <th className="border border-destructive p-2 text-left font-bold">QTY</th>
+                              <th className="border border-destructive p-2 text-left font-bold">POSITION</th>
+                              <th className="border border-destructive p-2 text-left font-bold">COST</th>
+                              <th className="border border-destructive p-2 text-center font-bold">MA</th>
+                              <th className="border border-destructive p-2 text-center font-bold">ST</th>
+                              <th className="border border-destructive p-2 text-center font-bold">AG</th>
+                              <th className="border border-destructive p-2 text-center font-bold">PA</th>
+                              <th className="border border-destructive p-2 text-center font-bold">AV</th>
+                              <th className="border border-destructive p-2 text-left font-bold">SKILLS</th>
+                              <th className="border border-destructive p-2 text-center font-bold">PRIMARY</th>
+                              <th className="border border-destructive p-2 text-center font-bold">SECONDARY</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {woodElfRoster.map((player, index) => (
+                              <tr key={index} className={index % 2 === 0 ? "bg-background" : "bg-muted/30"}>
+                                <td className="border border-border p-2">{player.qty}</td>
+                                <td className="border border-border p-2">{player.position}</td>
+                                <td className="border border-border p-2">{player.cost}</td>
+                                <td className="border border-border p-2 text-center">{player.ma}</td>
+                                <td className="border border-border p-2 text-center">{player.st}</td>
+                                <td className="border border-border p-2 text-center">{player.ag}</td>
+                                <td className="border border-border p-2 text-center">{player.pa}</td>
+                                <td className="border border-border p-2 text-center">{player.av}</td>
+                                <td className="border border-border p-2 text-sm">{player.skills}</td>
+                                <td className="border border-border p-2 text-center">{player.primary}</td>
+                                <td className="border border-border p-2 text-center">{player.secondary}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {/* Action Buttons */}
                 <div className="flex gap-4 justify-center pt-4">
