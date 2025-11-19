@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Dashboard from "@/components/Dashboard";
 import LeagueDetail from "./pages/LeagueDetail";
 import Match from "./pages/Match";
+import Teams from "./pages/Teams";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/liga/:leagueId" element={<LeagueDetail />} />
           <Route path="/partido/:matchId" element={<Match />} />
+          <Route path="/equipos" element={<Teams />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
