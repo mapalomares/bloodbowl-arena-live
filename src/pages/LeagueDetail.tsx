@@ -298,7 +298,12 @@ const LeagueDetail = () => {
                       <tr key={index} className="bb-table-row hover:bg-muted/50">
                         <td className="py-2 px-2 text-center font-bold">{team.position}</td>
                         <td className="py-2 px-2">
-                          <div className="text-primary font-bold">{team.name}</div>
+                          <div 
+                            className="text-primary font-bold cursor-pointer hover:underline"
+                            onClick={() => navigate(`/equipo/${index + 1}`)}
+                          >
+                            {team.name}
+                          </div>
                           <div className="text-xs text-muted-foreground">
                             ({team.race}) {team.coach}
                           </div>
