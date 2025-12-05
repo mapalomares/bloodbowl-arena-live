@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate, useParams } from "react-router-dom";
 import logo from "@/assets/bb-leagues-logo.png";
 import { Share2, Trophy, Users } from "lucide-react";
+import PlayerCard from "@/components/PlayerCard";
 
 interface Player {
   number: number;
@@ -18,21 +19,23 @@ interface Player {
   level: string;
   cost: number;
   borderColor: string;
+  team?: string;
+  specialRules?: string;
 }
 
 const mockPlayers: Player[] = [
-  { number: 2, name: "Diana", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: [], spp: 0, level: "Novato", cost: 70000, borderColor: "border-sky-400" },
-  { number: 5, name: "Milla", position: "Lanzador", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: ["Pasar", "Líder"], spp: 3, level: "Experimentado", cost: 115000, borderColor: "border-sky-400" },
-  { number: 6, name: "Mario Martin II", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: [], spp: 2, level: "Novato", cost: 70000, borderColor: "border-sky-400" },
-  { number: 8, name: "Argarabarri", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: [], spp: 2, level: "Novato", cost: 70000, borderColor: "border-sky-400" },
-  { number: 13, name: "David Soria", position: "Hombre Árbol de Lorien", ma: 2, st: 6, ag: 5, pa: 5, av: 11, skills: ["Cabeza Dura", "Brazo Fuerte", "Mantenerse Firme", "Golpe Mortífero (+1)", "Lanzar Compañero", "Echar Raíces", "Solitario (4+)"], spp: 5, level: "Novato", cost: 120000, borderColor: "border-red-500" },
-  { number: 14, name: "jpalomares14", position: "Bailarín Guerrero", ma: 8, st: 3, ag: 2, pa: 4, av: 8, skills: ["Saltar", "Esquivar", "Placar", "Placaje Defensivo", "Echarse a un lado"], spp: 0, level: "Veterano", cost: 165000, borderColor: "border-red-500" },
-  { number: 20, name: "Coba", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: [], spp: 4, level: "Novato", cost: 70000, borderColor: "border-sky-400" },
-  { number: 21, name: "Iglesias", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: ["Placar"], spp: 1, level: "Experimentado", cost: 90000, borderColor: "border-sky-400" },
-  { number: 23, name: "Liso", position: "Receptor", ma: 8, st: 3, ag: 2, pa: 4, av: 8, skills: ["Atrapar", "Esquivar"], spp: 0, level: "Novato", cost: 90000, borderColor: "border-yellow-400" },
-  { number: 39, name: "Mei", position: "Bailarín Guerrero", ma: 8, st: 3, ag: 2, pa: 4, av: 8, skills: ["Placar", "Esquivar", "Saltar"], spp: 3, level: "Novato", cost: 125000, borderColor: "border-red-500" },
-  { number: 98, name: "Noname", position: "Independiente", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: ["Solitario (4+)"], spp: 0, level: "Novato", cost: 70000, borderColor: "border-red-500" },
-  { number: 99, name: "Noname", position: "Independiente", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: ["Solitario (4+)"], spp: 0, level: "Novato", cost: 70000, borderColor: "border-red-500" },
+  { number: 2, name: "Diana", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: [], spp: 0, level: "Novato", cost: 70000, borderColor: "border-sky-400", team: "Gelftafe N.0" },
+  { number: 5, name: "Milla", position: "Lanzador", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: ["Pasar", "Líder"], spp: 3, level: "Experimentado", cost: 115000, borderColor: "border-sky-400", team: "Gelftafe N.0" },
+  { number: 6, name: "Mario Martin II", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: [], spp: 2, level: "Novato", cost: 70000, borderColor: "border-sky-400", team: "Gelftafe N.0" },
+  { number: 8, name: "Argarabarri", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: [], spp: 2, level: "Novato", cost: 70000, borderColor: "border-sky-400", team: "Gelftafe N.0" },
+  { number: 13, name: "David Soria", position: "Hombre Árbol", ma: 2, st: 6, ag: 5, pa: 5, av: 11, skills: ["Cabeza Dura", "Brazo Fuerte", "Mantenerse Firme", "Golpe Mortífero (+1)", "Lanzar Compañero", "Echar Raíces", "Solitario (4+)"], spp: 5, level: "Novato", cost: 120000, borderColor: "border-red-500", team: "Gelftafe N.0", specialRules: "Echar Raíces: Este jugador puede elegir echar raíces al inicio de su activación." },
+  { number: 14, name: "jpalomares14", position: "Bailarín Guerrero", ma: 8, st: 3, ag: 2, pa: 4, av: 8, skills: ["Saltar", "Esquivar", "Placar", "Placaje Defensivo", "Echarse a un lado"], spp: 0, level: "Veterano", cost: 165000, borderColor: "border-red-500", team: "Gelftafe N.0" },
+  { number: 20, name: "Coba", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: [], spp: 4, level: "Novato", cost: 70000, borderColor: "border-sky-400", team: "Gelftafe N.0" },
+  { number: 21, name: "Iglesias", position: "Línea Elfo Silvano", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: ["Placar"], spp: 1, level: "Experimentado", cost: 90000, borderColor: "border-sky-400", team: "Gelftafe N.0" },
+  { number: 23, name: "Liso", position: "Receptor", ma: 8, st: 3, ag: 2, pa: 4, av: 8, skills: ["Atrapar", "Esquivar"], spp: 0, level: "Novato", cost: 90000, borderColor: "border-yellow-400", team: "Gelftafe N.0" },
+  { number: 39, name: "Mei", position: "Bailarín Guerrero", ma: 8, st: 3, ag: 2, pa: 4, av: 8, skills: ["Placar", "Esquivar", "Saltar"], spp: 3, level: "Novato", cost: 125000, borderColor: "border-red-500", team: "Gelftafe N.0" },
+  { number: 98, name: "Noname", position: "Independiente", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: ["Solitario (4+)"], spp: 0, level: "Novato", cost: 70000, borderColor: "border-red-500", team: "Gelftafe N.0" },
+  { number: 99, name: "Noname", position: "Independiente", ma: 7, st: 3, ag: 2, pa: 4, av: 8, skills: ["Solitario (4+)"], spp: 0, level: "Novato", cost: 70000, borderColor: "border-red-500", team: "Gelftafe N.0" },
 ];
 
 const TeamDetail = () => {
@@ -135,56 +138,9 @@ const TeamDetail = () => {
         </h2>
 
         {/* Players Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-6 justify-items-center">
           {mockPlayers.map((player, index) => (
-            <div 
-              key={index} 
-              className={`bg-card border-4 ${player.borderColor} rounded shadow-md overflow-hidden`}
-            >
-              {/* Player Header */}
-              <div className="flex justify-between items-start p-1 bg-muted">
-                <span className="font-bold text-lg">{player.number}</span>
-                <div className="text-right">
-                  <div className="font-bold text-sm text-red-700" style={{ fontFamily: 'serif' }}>{player.name}</div>
-                  <div className="text-xs text-muted-foreground italic">{player.position}</div>
-                </div>
-              </div>
-
-              {/* Player Image Placeholder */}
-              <div className="relative">
-                <div className="w-full aspect-square bg-gradient-to-b from-muted to-muted/50 flex items-center justify-center">
-                  <Users className="w-16 h-16 text-muted-foreground/50" />
-                </div>
-                {/* Stats on right side */}
-                <div className="absolute top-1 right-1 flex flex-col gap-0.5">
-                  <div className="bg-card border border-border px-2 py-0.5 text-xs font-bold text-right">{player.ma}</div>
-                  <div className="bg-card border border-border px-2 py-0.5 text-xs font-bold text-right">{player.st}</div>
-                  <div className="bg-card border border-border px-2 py-0.5 text-xs font-bold text-right">{player.ag}</div>
-                  <div className="bg-card border border-border px-2 py-0.5 text-xs font-bold text-right">{player.pa}</div>
-                </div>
-                {/* AV at bottom */}
-                <div className="absolute bottom-1 right-1">
-                  <div className="bg-card border border-border px-2 py-0.5 text-xs font-bold">{player.av}</div>
-                </div>
-              </div>
-
-              {/* Skills and SPP */}
-              <div className="p-1 bg-card min-h-[60px]">
-                <div className="text-xs text-primary font-bold">
-                  [{player.spp} PE ({player.level})]
-                </div>
-                {player.skills.length > 0 && (
-                  <div className="text-xs mt-1">
-                    {player.skills.join(", ")}
-                  </div>
-                )}
-              </div>
-
-              {/* Cost */}
-              <div className="bg-muted p-1 text-center text-sm font-bold border-t border-border">
-                {player.cost.toLocaleString()} mo
-              </div>
-            </div>
+            <PlayerCard key={index} player={player} />
           ))}
         </div>
 
