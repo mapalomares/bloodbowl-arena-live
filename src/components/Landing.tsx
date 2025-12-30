@@ -1,130 +1,256 @@
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
+import { Trophy, Star, Calendar, Users, ChevronRight, Newspaper } from "lucide-react";
+import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 import logo from "@/assets/bb-leagues-logo.png";
+
+// Mock data for Hall of Fame
+const hallOfFame = [
+  { rank: 1, name: "Griff Oberwald", team: "Reikland Reavers", touchdowns: 127, race: "Humanos" },
+  { rank: 2, name: "Morg 'n' Thorg", team: "Mercenario", touchdowns: 115, race: "Ogro" },
+  { rank: 3, name: "Eldril Sidewinder", team: "Darkside Cowboys", touchdowns: 98, race: "Elfos Oscuros" },
+  { rank: 4, name: "Varag Ghoul-Chewer", team: "Gouged Eye", touchdowns: 89, race: "Orcos" },
+  { rank: 5, name: "Hakflem Skuttlespike", team: "Skavenblight Scramblers", touchdowns: 84, race: "Skaven" },
+];
+
+// Mock data for featured leagues
+const featuredLeagues = [
+  { id: 1, name: "VillaverdeBowl XXIII Edition", teams: 14, status: "En curso", commissioner: "Admin" },
+  { id: 2, name: "Liga Nacional Blood Bowl", teams: 12, status: "Inscripción abierta", commissioner: "Comisario1" },
+  { id: 3, name: "Torneo Primavera 2025", teams: 8, status: "Finalizada", commissioner: "Comisario2" },
+  { id: 4, name: "Copa del Rey del Tablero", teams: 16, status: "En curso", commissioner: "Admin" },
+];
+
+// Mock data for news
+const latestNews = [
+  { id: 1, title: "VillaverdeBowl XXIII: Comienza la Jornada 5", date: "2025-01-10", excerpt: "La quinta jornada promete enfrentamientos épicos entre los equipos clasificados." },
+  { id: 2, title: "Nuevas reglas para la temporada 2025", date: "2025-01-05", excerpt: "El comité ha aprobado cambios en las reglas de desempate para esta temporada." },
+  { id: 3, title: "Inscripciones abiertas para Liga Nacional", date: "2025-01-02", excerpt: "Ya puedes inscribir tu equipo en la liga más prestigiosa del país." },
+];
 
 const Landing = () => {
   const navigate = useNavigate();
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = () => {
-    // TODO: Implement login logic with validation
-    navigate("/dashboard");
-  };
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header with Logo and Title */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-center">
-          {/* Logo */}
-          <div className="flex justify-center md:justify-start">
-            <img src={logo} alt="BB Leagues Logo" className="h-32 md:h-40 object-contain" />
-          </div>
+    <div className="min-h-screen flex flex-col">
+      <Header />
 
-          {/* Title */}
-          <div className="text-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-primary mb-2" style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.4)' }}>
-              El mejor gestor de ligas
-            </h1>
-            <p className="text-sm md:text-base text-foreground uppercase tracking-wide" style={{ fontFamily: 'Georgia, serif' }}>
-              Ideal para aficionados al fútbol de tablero
-            </p>
-            <p className="text-sm md:text-base text-foreground uppercase tracking-wide" style={{ fontFamily: 'Georgia, serif' }}>
-              tipo Blood Bowl
-            </p>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-primary to-primary/80 text-primary-foreground py-16 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <img src={logo} alt="BB Leagues" className="h-32 md:h-40 mx-auto mb-6" />
+          <h1 
+            className="text-3xl md:text-5xl font-bold mb-4"
+            style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.4)' }}
+          >
+            El mejor gestor de ligas
+          </h1>
+          <p className="text-lg md:text-xl mb-2 opacity-90" style={{ fontFamily: 'Georgia, serif' }}>
+            Ideal para aficionados al fútbol de tablero tipo Blood Bowl
+          </p>
+          <p className="text-base opacity-80 mb-8">
+            Organiza torneos, gestiona equipos y lleva el control de tus ligas
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button 
+              onClick={() => navigate('/register')}
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-8"
+              style={{ fontFamily: 'Georgia, serif' }}
+            >
+              Regístrate Gratis
+            </Button>
+            <Button 
+              onClick={() => navigate('/leagues')}
+              size="lg"
+              variant="outline"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold px-8"
+              style={{ fontFamily: 'Georgia, serif' }}
+            >
+              Ver Ligas
+            </Button>
           </div>
+        </div>
+      </section>
 
-          {/* Login Panel */}
-          <div className="bb-content-area max-w-sm mx-auto md:mx-0 md:ml-auto">
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-bold mb-1" style={{ fontFamily: 'Georgia, serif' }}>
-                  Login:
-                </label>
-                <Input
-                  type="text"
-                  value={login}
-                  onChange={(e) => setLogin(e.target.value)}
-                  className="w-full"
-                />
+      <main className="flex-1 p-4 py-8">
+        <div className="max-w-7xl mx-auto space-y-8">
+
+          {/* Features */}
+          <section className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {[
+              { icon: Trophy, title: "Ligas y Torneos", desc: "Organiza competiciones con playoffs y clasificaciones" },
+              { icon: Users, title: "Gestión de Equipos", desc: "Controla plantillas, jugadores y staff" },
+              { icon: Calendar, title: "Calendario de Partidos", desc: "Programa y registra actas de partidos" },
+              { icon: Star, title: "Hall of Fame", desc: "Reconoce a los mejores jugadores" },
+            ].map((feature, index) => (
+              <div key={index} className="bb-content-area p-4 text-center hover:shadow-lg transition-shadow">
+                <feature.icon className="w-10 h-10 text-primary mx-auto mb-3" />
+                <h3 className="font-bold text-primary mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">{feature.desc}</p>
               </div>
-              <div>
-                <label className="block text-sm font-bold mb-1" style={{ fontFamily: 'Georgia, serif' }}>
-                  Password:
-                </label>
-                <Input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full"
-                />
+            ))}
+          </section>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Hall of Fame */}
+            <div className="lg:col-span-1">
+              <div className="bb-content-area h-full">
+                <div className="flex items-center gap-2 mb-4">
+                  <Trophy className="w-6 h-6 text-accent" />
+                  <h2 
+                    className="text-xl font-bold text-primary"
+                    style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase' }}
+                  >
+                    Hall of Fame
+                  </h2>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">Top 5 Anotadores de Touchdowns</p>
+                
+                <div className="space-y-3">
+                  {hallOfFame.map((player) => (
+                    <div 
+                      key={player.rank} 
+                      className="flex items-center gap-3 p-2 rounded bg-secondary/50 hover:bg-secondary transition-colors"
+                    >
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
+                        player.rank === 1 ? 'bg-yellow-500 text-yellow-900' :
+                        player.rank === 2 ? 'bg-gray-300 text-gray-700' :
+                        player.rank === 3 ? 'bg-amber-600 text-amber-100' :
+                        'bg-muted text-muted-foreground'
+                      }`}>
+                        {player.rank}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-bold text-sm truncate">{player.name}</p>
+                        <p className="text-xs text-muted-foreground truncate">{player.team}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-bold text-accent">{player.touchdowns}</p>
+                        <p className="text-xs text-muted-foreground">TDs</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <Link 
+                  to="/hall-of-fame" 
+                  className="flex items-center justify-center gap-1 mt-4 text-sm text-primary hover:underline font-medium"
+                >
+                  Ver Hall of Fame completo <ChevronRight className="w-4 h-4" />
+                </Link>
               </div>
-              <Button onClick={handleLogin} className="w-full font-bold" style={{ fontFamily: 'Georgia, serif' }}>
-                Entrar
-              </Button>
-              <div className="text-xs text-center space-y-1">
-                <div>
-                  <input type="checkbox" id="remember" className="mr-2" />
-                  <label htmlFor="remember">Recuérdame en este ordenador</label>
+            </div>
+
+            {/* Featured Leagues */}
+            <div className="lg:col-span-2">
+              <div className="bb-content-area h-full">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 
+                    className="text-xl font-bold text-primary"
+                    style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase' }}
+                  >
+                    Ligas Destacadas
+                  </h2>
+                  <Link 
+                    to="/leagues" 
+                    className="text-sm text-primary hover:underline font-medium flex items-center gap-1"
+                  >
+                    Ver todas <ChevronRight className="w-4 h-4" />
+                  </Link>
                 </div>
-                <div className="space-x-3">
-                  <a href="#" className="text-primary hover:underline">Regístrate</a>
-                  <a href="#" className="text-primary hover:underline">¿Olvidaste tu contraseña?</a>
-                </div>
-                <div className="flex justify-center gap-2 mt-2">
-                  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3Crect width='60' height='30' fill='%23012169'/%3E%3Cpath d='M0 0l60 30M60 0L0 30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0 0l60 30M60 0L0 30' stroke='%23C8102E' stroke-width='4' clip-path='inset(0 round 0)'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/svg%3E" alt="English" className="w-6 h-4 cursor-pointer" />
-                  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 500'%3E%3Crect width='750' height='500' fill='%23c60b1e'/%3E%3Crect y='166.67' width='750' height='166.67' fill='%23ffc400'/%3E%3C/svg%3E" alt="Español" className="w-6 h-4 cursor-pointer" />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {featuredLeagues.map((league) => (
+                    <Link
+                      key={league.id}
+                      to={`/liga/${league.id}`}
+                      className="block p-4 rounded bg-secondary/50 hover:bg-secondary border-2 border-transparent hover:border-primary/30 transition-all"
+                    >
+                      <h3 className="font-bold text-primary mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+                        {league.name}
+                      </h3>
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <Users className="w-4 h-4" /> {league.teams} equipos
+                        </span>
+                      </div>
+                      <div className="mt-2">
+                        <span className={`inline-block px-2 py-1 rounded text-xs font-medium ${
+                          league.status === 'En curso' ? 'bg-green-100 text-green-800' :
+                          league.status === 'Inscripción abierta' ? 'bg-blue-100 text-blue-800' :
+                          'bg-gray-100 text-gray-800'
+                        }`}>
+                          {league.status}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Navigation Buttons */}
-        <div className="flex flex-wrap gap-4 justify-center mb-8">
-          <Button className="px-8 py-6 text-lg font-bold bg-card hover:bg-card/80 text-card-foreground border-2 border-primary shadow-lg" style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase' }}>
-            Inicio
-          </Button>
-          <Button className="px-8 py-6 text-lg font-bold bg-card hover:bg-card/80 text-card-foreground border-2 border-primary shadow-lg" style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase' }}>
-            Hall of Fame
-          </Button>
-          <Button className="px-8 py-6 text-lg font-bold bg-card hover:bg-card/80 text-card-foreground border-2 border-primary shadow-lg" style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase' }}>
-            Ligas
-          </Button>
-          <Button className="px-8 py-6 text-lg font-bold bg-card hover:bg-card/80 text-card-foreground border-2 border-primary shadow-lg" style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase' }}>
-            Equipos
-          </Button>
-        </div>
+          {/* Latest News */}
+          <section className="bb-content-area">
+            <div className="flex items-center gap-2 mb-4">
+              <Newspaper className="w-6 h-6 text-primary" />
+              <h2 
+                className="text-xl font-bold text-primary"
+                style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase' }}
+              >
+                Últimas Noticias
+              </h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {latestNews.map((news) => (
+                <article 
+                  key={news.id}
+                  className="p-4 rounded bg-secondary/50 hover:bg-secondary transition-colors cursor-pointer"
+                >
+                  <time className="text-xs text-muted-foreground">
+                    {new Date(news.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </time>
+                  <h3 className="font-bold text-primary mt-1 mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+                    {news.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {news.excerpt}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </section>
 
-        {/* All Leagues Section */}
-        <div className="bb-content-area">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary" style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}>
-            Todas las ligas
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* Example league cards - can be replaced with dynamic content */}
-            {[
-              { name: "VillaverdeBowl XXIII", teams: 14, status: "En curso" },
-              { name: "Liga Nacional Blood Bowl", teams: 12, status: "Inscripción abierta" },
-              { name: "Torneo Primavera 2025", teams: 8, status: "Finalizada" },
-            ].map((league, index) => (
-              <div key={index} className="bg-secondary p-4 rounded border-2 border-primary/30 hover:border-primary transition-colors cursor-pointer">
-                <h3 className="text-xl font-bold text-primary mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-                  {league.name}
-                </h3>
-                <div className="text-sm text-muted-foreground space-y-1">
-                  <p>Equipos: {league.teams}</p>
-                  <p className="font-bold text-accent">{league.status}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* CTA Section */}
+          <section className="bb-content-area bg-primary text-primary-foreground text-center py-8">
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{ fontFamily: 'Georgia, serif', textTransform: 'uppercase' }}
+            >
+              ¿Listo para empezar?
+            </h2>
+            <p className="mb-6 opacity-90">
+              Únete a la comunidad de Blood Bowl más grande de habla hispana
+            </p>
+            <Button 
+              onClick={() => navigate('/register')}
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-8"
+              style={{ fontFamily: 'Georgia, serif' }}
+            >
+              Crear Cuenta Gratis
+            </Button>
+          </section>
+
         </div>
-      </div>
+      </main>
+
+      <Footer />
     </div>
   );
 };
