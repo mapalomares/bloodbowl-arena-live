@@ -4,11 +4,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import Dashboard from "@/components/Dashboard";
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Leagues from "./pages/Leagues";
 import LeagueDetail from "./pages/LeagueDetail";
-import Match from "./pages/Match";
 import Teams from "./pages/Teams";
 import TeamDetail from "./pages/TeamDetail";
+import MatchDetail from "./pages/MatchDetail";
+import Forums from "./pages/Forums";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -43,10 +46,13 @@ const App = () => (
           
           {/* User Zone */}
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/leagues" element={<Leagues />} />
           <Route path="/liga/:leagueId" element={<LeagueDetail />} />
-          <Route path="/partido/:matchId" element={<Match />} />
           <Route path="/equipos" element={<Teams />} />
           <Route path="/equipo/:teamId" element={<TeamDetail />} />
+          <Route path="/partido/:matchId" element={<MatchDetail />} />
+          <Route path="/forums" element={<Forums />} />
           
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
