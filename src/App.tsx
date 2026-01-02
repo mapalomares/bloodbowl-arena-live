@@ -21,6 +21,13 @@ import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import CookiesPolicy from "./pages/legal/CookiesPolicy";
 import ServiceTerms from "./pages/legal/ServiceTerms";
 import NotFound from "./pages/NotFound";
+// Commissioner Zone
+import CommissionerDashboard from "./pages/commissioner/CommissionerDashboard";
+import MatchActForm from "./pages/commissioner/MatchActForm";
+import ManageTeams from "./pages/commissioner/ManageTeams";
+import ManageRounds from "./pages/commissioner/ManageRounds";
+import ManagePlayoffs from "./pages/commissioner/ManagePlayoffs";
+import LeagueSettings from "./pages/commissioner/LeagueSettings";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +60,14 @@ const App = () => (
           <Route path="/equipo/:teamId" element={<TeamDetail />} />
           <Route path="/partido/:matchId" element={<MatchDetail />} />
           <Route path="/forums" element={<Forums />} />
+          
+          {/* Commissioner Zone */}
+          <Route path="/comisario/:leagueId" element={<CommissionerDashboard />} />
+          <Route path="/comisario/:leagueId/acta" element={<MatchActForm />} />
+          <Route path="/comisario/:leagueId/equipos" element={<ManageTeams />} />
+          <Route path="/comisario/:leagueId/jornadas" element={<ManageRounds />} />
+          <Route path="/comisario/:leagueId/playoffs" element={<ManagePlayoffs />} />
+          <Route path="/comisario/:leagueId/configuracion" element={<LeagueSettings />} />
           
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
