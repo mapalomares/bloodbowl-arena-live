@@ -69,6 +69,16 @@ const App = () => (
           <Route path="/comisario/:leagueId/playoffs" element={<ManagePlayoffs />} />
           <Route path="/comisario/:leagueId/configuracion" element={<LeagueSettings />} />
           
+          {/* Admin Zone */}
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/leagues" element={<AdminLeagues />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/teams" element={<AdminTeams />} />
+          <Route path="/admin/bonuses" element={<AdminBonuses />} />
+          <Route path="/admin/data/races" element={<AdminRaces />} />
+          <Route path="/admin/maintenance/:section" element={<AdminMaintenance />} />
+          <Route path="/admin/reports" element={<AdminReports />} />
+          
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
         </Routes>
