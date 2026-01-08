@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import HallOfFame from "./pages/HallOfFame";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Leagues from "./pages/Leagues";
@@ -53,6 +54,9 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/contact" element={<Contact />} />
+          
+          {/* Hall of Fame */}
+          <Route path="/hall-of-fame" element={<HallOfFame />} />
           
           {/* Legal Pages */}
           <Route path="/terms" element={<Terms />} />
