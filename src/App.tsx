@@ -28,6 +28,15 @@ import ManageTeams from "./pages/commissioner/ManageTeams";
 import ManageRounds from "./pages/commissioner/ManageRounds";
 import ManagePlayoffs from "./pages/commissioner/ManagePlayoffs";
 import LeagueSettings from "./pages/commissioner/LeagueSettings";
+// Admin Zone
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminLeagues from "./pages/admin/AdminLeagues";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminTeams from "./pages/admin/AdminTeams";
+import AdminBonuses from "./pages/admin/AdminBonuses";
+import AdminRaces from "./pages/admin/AdminRaces";
+import AdminMaintenance from "./pages/admin/AdminMaintenance";
+import AdminReports from "./pages/admin/AdminReports";
 
 const queryClient = new QueryClient();
 
