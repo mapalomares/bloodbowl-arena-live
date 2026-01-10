@@ -29,6 +29,9 @@ import ManageTeams from "./pages/commissioner/ManageTeams";
 import ManageRounds from "./pages/commissioner/ManageRounds";
 import ManagePlayoffs from "./pages/commissioner/ManagePlayoffs";
 import LeagueSettings from "./pages/commissioner/LeagueSettings";
+import ManageResults from "./pages/commissioner/ManageResults";
+import ManageTiebreakers from "./pages/commissioner/ManageTiebreakers";
+import ManageNotifications from "./pages/commissioner/ManageNotifications";
 // Admin Zone
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminLeagues from "./pages/admin/AdminLeagues";
@@ -81,6 +84,9 @@ const App = () => (
           <Route path="/comisario/:leagueId/jornadas" element={<ManageRounds />} />
           <Route path="/comisario/:leagueId/playoffs" element={<ManagePlayoffs />} />
           <Route path="/comisario/:leagueId/configuracion" element={<LeagueSettings />} />
+          <Route path="/comisario/:leagueId/resultados" element={<ManageResults />} />
+          <Route path="/comisario/:leagueId/desempates" element={<ManageTiebreakers />} />
+          <Route path="/comisario/:leagueId/notificaciones" element={<ManageNotifications />} />
           
           {/* Admin Zone */}
           <Route path="/admin" element={<AdminDashboard />} />
