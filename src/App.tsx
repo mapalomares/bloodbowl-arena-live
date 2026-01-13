@@ -35,10 +35,13 @@ import ManageNotifications from "./pages/commissioner/ManageNotifications";
 // Admin Zone
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminLeagues from "./pages/admin/AdminLeagues";
+import AdminCreateLeague from "./pages/admin/AdminCreateLeague";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminTeams from "./pages/admin/AdminTeams";
 import AdminBonuses from "./pages/admin/AdminBonuses";
 import AdminRaces from "./pages/admin/AdminRaces";
+import AdminPlayerTypes from "./pages/admin/AdminPlayerTypes";
+import AdminSkills from "./pages/admin/AdminSkills";
 import AdminMaintenance from "./pages/admin/AdminMaintenance";
 import AdminReports from "./pages/admin/AdminReports";
 
@@ -91,10 +94,13 @@ const App = () => (
           {/* Admin Zone */}
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/leagues" element={<AdminLeagues />} />
+          <Route path="/admin/leagues/new" element={<AdminCreateLeague />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/teams" element={<AdminTeams />} />
           <Route path="/admin/bonuses" element={<AdminBonuses />} />
           <Route path="/admin/data/races" element={<AdminRaces />} />
+          <Route path="/admin/data/player-types" element={<AdminPlayerTypes />} />
+          <Route path="/admin/data/skills" element={<AdminSkills />} />
           <Route path="/admin/maintenance/:section" element={<AdminMaintenance />} />
           <Route path="/admin/reports" element={<AdminReports />} />
           
