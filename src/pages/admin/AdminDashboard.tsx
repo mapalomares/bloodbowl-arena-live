@@ -5,8 +5,25 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
   Users, Trophy, Shield, Gamepad2, Settings, Database, 
-  Gift, FileText, Activity, Server, Lock, Download
+  Gift, FileText, Activity, Server, Lock, Download, TrendingUp
 } from "lucide-react";
+import {
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend
+} from "recharts";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -40,6 +57,42 @@ const AdminDashboard = () => {
     { label: "Almacenamiento", status: "ok", value: "2.3 GB / 10 GB" },
     { label: "CPU", status: "warning", value: "72% uso" },
     { label: "Memoria", status: "ok", value: "1.2 GB / 4 GB" },
+  ];
+
+  // Chart data
+  const userGrowthData = [
+    { month: "Ene", usuarios: 820, nuevos: 45 },
+    { month: "Feb", usuarios: 890, nuevos: 70 },
+    { month: "Mar", usuarios: 950, nuevos: 60 },
+    { month: "Abr", usuarios: 1020, nuevos: 70 },
+    { month: "May", usuarios: 1120, nuevos: 100 },
+    { month: "Jun", usuarios: 1247, nuevos: 127 },
+  ];
+
+  const matchesData = [
+    { month: "Ene", partidos: 320, completados: 310 },
+    { month: "Feb", partidos: 380, completados: 375 },
+    { month: "Mar", partidos: 420, completados: 405 },
+    { month: "Abr", partidos: 510, completados: 498 },
+    { month: "May", partidos: 580, completados: 565 },
+    { month: "Jun", partidos: 681, completados: 670 },
+  ];
+
+  const leagueDistributionData = [
+    { name: "Blood Bowl", value: 12, color: "hsl(var(--primary))" },
+    { name: "Dungeonbowl", value: 5, color: "hsl(var(--secondary))" },
+    { name: "Sevens", value: 4, color: "hsl(var(--accent))" },
+    { name: "Blitz", value: 2, color: "hsl(var(--muted))" },
+  ];
+
+  const weeklyActivityData = [
+    { day: "Lun", acciones: 145 },
+    { day: "Mar", acciones: 189 },
+    { day: "Mié", acciones: 234 },
+    { day: "Jue", acciones: 178 },
+    { day: "Vie", acciones: 267 },
+    { day: "Sáb", acciones: 312 },
+    { day: "Dom", acciones: 198 },
   ];
 
   const getStatusColor = (status: string) => {
@@ -151,6 +204,148 @@ const AdminDashboard = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Charts Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+          {/* User Growth Chart */}
+          <Card className="bb-content-area">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="h-5 w-5" />
+                Crecimiento de Usuarios
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={250}>
+                <AreaChart data={userGrowthData}>
+                  <defs>
+                    <linearGradient id="userGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                  <Tooltip 
+                    contentStyle={{ 
+                      backgroundColor: "hsl(var(--card))", 
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: "8px"
+                    }}
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="usuarios" 
+                    stroke="hsl(var(--primary))" 
+                    fill="url(#userGradient)" 
+                    strokeWidth={2}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+
+          {/* Matches Chart */}
+          <Card className="bb-content-area">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Gamepad2 className="h-5 w-5" />
+                Partidos por Mes
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={250}>
+                <BarChart data={matchesData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                  <Tooltip 
+                    contentStyle={{ 
+                      backgroundColor: "hsl(var(--card))", 
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: "8px"
+                    }}
+                  />
+                  <Legend />
+                  <Bar dataKey="partidos" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="completados" fill="hsl(var(--secondary))" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+
+          {/* League Distribution */}
+          <Card className="bb-content-area">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Trophy className="h-5 w-5" />
+                Distribución de Ligas
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={250}>
+                <PieChart>
+                  <Pie
+                    data={leagueDistributionData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={90}
+                    paddingAngle={5}
+                    dataKey="value"
+                    label={({ name, value }) => `${name}: ${value}`}
+                  >
+                    {leagueDistributionData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip 
+                    contentStyle={{ 
+                      backgroundColor: "hsl(var(--card))", 
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: "8px"
+                    }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+
+          {/* Weekly Activity */}
+          <Card className="bb-content-area">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Activity className="h-5 w-5" />
+                Actividad Semanal
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={250}>
+                <LineChart data={weeklyActivityData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                  <Tooltip 
+                    contentStyle={{ 
+                      backgroundColor: "hsl(var(--card))", 
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: "8px"
+                    }}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="acciones" 
+                    stroke="hsl(var(--primary))" 
+                    strokeWidth={3}
+                    dot={{ fill: "hsl(var(--primary))", strokeWidth: 2, r: 4 }}
+                    activeDot={{ r: 6, fill: "hsl(var(--primary))" }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Recent Activity */}
