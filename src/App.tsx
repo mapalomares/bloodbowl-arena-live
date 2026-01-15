@@ -8,11 +8,14 @@ import HallOfFame from "./pages/HallOfFame";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Leagues from "./pages/Leagues";
+import LeaguesHistory from "./pages/LeaguesHistory";
 import LeagueDetail from "./pages/LeagueDetail";
 import Teams from "./pages/Teams";
 import TeamDetail from "./pages/TeamDetail";
 import MatchDetail from "./pages/MatchDetail";
 import Forums from "./pages/Forums";
+import ForumCategory from "./pages/ForumCategory";
+import ForumTopic from "./pages/ForumTopic";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -74,11 +77,14 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/leagues" element={<Leagues />} />
+          <Route path="/leagues/history" element={<LeaguesHistory />} />
           <Route path="/liga/:leagueId" element={<LeagueDetail />} />
           <Route path="/equipos" element={<Teams />} />
           <Route path="/equipo/:teamId" element={<TeamDetail />} />
           <Route path="/partido/:matchId" element={<MatchDetail />} />
           <Route path="/forums" element={<Forums />} />
+          <Route path="/forums/:categoryId" element={<ForumCategory />} />
+          <Route path="/forums/:categoryId/:topicId" element={<ForumTopic />} />
           
           {/* Commissioner Zone */}
           <Route path="/comisario/:leagueId" element={<CommissionerDashboard />} />
