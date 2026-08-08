@@ -178,7 +178,7 @@ const MatchActForm = () => {
                       <SelectValue placeholder="Sin lesión" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Sin lesión</SelectItem>
+                      <SelectItem value="none">Sin lesión</SelectItem>
                       <SelectItem value="ko">KO</SelectItem>
                       <SelectItem value="herido">Herido leve</SelectItem>
                       <SelectItem value="grave">Herido grave</SelectItem>
