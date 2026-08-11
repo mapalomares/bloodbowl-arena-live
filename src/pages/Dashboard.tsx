@@ -210,7 +210,7 @@ const Dashboard = () => {
                     <Trophy className="h-4 w-4 mr-2" />
                     Ver Ligas
                   </Button>
-                  <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/equipos/nuevo')}>
+                  <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/equipos?nuevo=1')}>
                     <Shield className="h-4 w-4 mr-2" />
                     Crear Equipo
                   </Button>
