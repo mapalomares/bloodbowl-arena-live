@@ -28,10 +28,11 @@ interface LeagueWithTeams {
 
 const Teams = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [username] = useState("tirkha");
   const [lastConnection] = useState("2025-11-12 22:07:00");
   const [hasNotifications] = useState(true);
-  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [showCreateForm, setShowCreateForm] = useState(searchParams.get("nuevo") === "1");
   const [teamName, setTeamName] = useState("");
   const [rulebook, setRulebook] = useState("");
   const [race, setRace] = useState("");
