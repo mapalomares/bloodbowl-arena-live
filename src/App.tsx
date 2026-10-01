@@ -13,6 +13,7 @@ import LeagueDetail from "./pages/LeagueDetail";
 import Teams from "./pages/Teams";
 import TeamDetail from "./pages/TeamDetail";
 import MatchDetail from "./pages/MatchDetail";
+import MatchActPdf from "./pages/MatchActPdf";
 import Forums from "./pages/Forums";
 import ForumCategory from "./pages/ForumCategory";
 import ForumTopic from "./pages/ForumTopic";
@@ -82,6 +83,7 @@ const App = () => (
           <Route path="/equipos" element={<Teams />} />
           <Route path="/equipo/:teamId" element={<TeamDetail />} />
           <Route path="/partido/:matchId" element={<MatchDetail />} />
+          <Route path="/partido/:matchId/acta-pdf" element={<MatchActPdf />} />
           <Route path="/forums" element={<Forums />} />
           <Route path="/forums/:categoryId" element={<ForumCategory />} />
           <Route path="/forums/:categoryId/:topicId" element={<ForumTopic />} />
