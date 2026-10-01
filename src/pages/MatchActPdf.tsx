@@ -189,9 +189,9 @@ const MatchActPdf = () => {
 const css = `
 @page { size: A4 landscape; margin: 6mm; }
 html, body { background: #fff; }
-.acta { width: 285mm; margin: 0 auto; font-family: Arial, Helvetica, sans-serif; color: #000; background: #fff; font-size: 7.6pt; padding: 4mm 0; }
+.acta { width: 285mm; margin: 0 auto; font-family: Arial, Helvetica, sans-serif; color: #000; background: #fff; font-size: 7.6pt; padding: 4mm 0; line-height: 1.15; }
 .acta .top { display: flex; justify-content: space-between; align-items: flex-start; }
-.acta .th { display: flex; align-items: center; gap: 6px; width: 105mm; }
+.acta .th { display: flex; align-items: center; gap: 4mm; width: 92mm; }
 .acta .th-l { margin-left: 2mm; } .acta .th-r { margin-right: 2mm; }
 .acta .th .logo { display:block; }
 .acta .logo { width: 15mm; height: 13mm; object-fit: contain; }
@@ -207,7 +207,7 @@ html, body { background: #fff; }
 .acta .clima { padding-top: 8px; }
 .acta .main { width: 100%; table-layout: fixed; font-size: 7.2pt; }
 .acta .main th { font-weight: normal; text-align: center; }
-.acta .main td { height: 25px; line-height: 1.1; }
+.acta .main td { height: 24px; line-height: 1.1; }
 .acta .main .w-n { width: 2.2%; } .acta .main .w-nm { width: 10%; } .acta .main .w-st { width: 4.6%; } .acta .main .w-sk { width: 16.6%; } .acta .main .w-x { width: 2.1%; padding: 1px 0; font-size: 6.4pt; }
 .acta img { display: inline-block; }
 .acta .main td.c { text-align: center; }
@@ -216,9 +216,9 @@ html, body { background: #fff; }
 .acta .bottom { display: flex; gap: 12mm; margin-top: 4mm; padding-left: 3mm; align-items: flex-start; }
 .acta .col1 { width: 78mm; }
 .acta .pair { display: flex; gap: 3mm; margin-bottom: 7mm; }
-.acta .ref { font-size: 6pt; }
+.acta .ref { font-size: 5.8pt; }
 .acta .ref th { background: #b2f5b2; font-weight: normal; text-align: center; }
-.acta .ref td { text-align: center; padding: 2px 3px; }
+.acta .ref td { text-align: center; padding: 1px 3px; line-height: 1.1; }
 .acta .ref.txt td:last-child { text-align: left; }
 .acta .pair .ref:first-child { width: 37mm; } .acta .pair .ref:last-child { width: 40mm; }
 .acta .clima-t { width: 75mm; }
