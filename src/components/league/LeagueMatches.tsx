@@ -114,7 +114,7 @@ const LeagueMatches = ({ leagueId }: LeagueMatchesProps) => {
                       </Button>
                     ) : (
                       <div className="space-y-1">
-                        <div className="text-primary hover:underline font-bold cursor-pointer text-xs">Generar pdf de acta</div>
+                        <button type="button" onClick={() => window.open(`/partido/${match.id}/acta-pdf`, "_blank")} className="block w-full text-primary hover:underline font-bold cursor-pointer text-xs">Generar pdf de acta</button>
                         <div className="text-primary hover:underline font-bold cursor-pointer text-xs">Introducir acta</div>
                         <Button 
                           onClick={() => navigate(`/partido/${match.id}`)}
