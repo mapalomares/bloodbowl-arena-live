@@ -58,7 +58,7 @@ const TeamHeader = ({ t, side }: { t: ActaTeam; side: "l" | "r" }) => (
     {side === "l" && <img src={t.logo} className="logo" alt="" />}
     <div className="th-box">
       <div className="th-name">{t.name} ({t.tv})</div>
-      <table className="grid hdr"><tbody>
+      <table className="bx hdr"><tbody>
         <tr><td>TD</td><td>HERIDAS</td><td style={{ width: "50%" }}>GANANCIAS</td><td>HINCHAS</td></tr>
         <tr><td>&nbsp;</td><td /><td /><td /></tr>
       </tbody></table>
@@ -96,7 +96,7 @@ const MatchActPdf = () => {
         <div className="m-r">{meta(visitor)}</div>
       </div>
 
-      <table className="grid main">
+      <table className="bx main">
         <thead>
           <tr>
             <th className="w-n">N</th><th className="w-nm">NOMBRE<br />(POS)</th><th className="w-st" /><th className="w-sk">HABILIDADES</th>
@@ -129,16 +129,16 @@ const MatchActPdf = () => {
       <div className="bottom">
         <div className="col1">
           <div className="pair">
-            <table className="grid ref">
+            <table className="bx ref">
               <thead><tr><th colSpan={2}>LESIONES</th></tr><tr><th>D16</th><th>Resultado</th></tr></thead>
               <tbody>{[["1-6","Contusión"],["7-9","LPPE"],["10-12","Lesión Permanente"],["13-14","Perdida de Característica"],["15-16","MUERTO"]].map(r=><tr key={r[0]}><td>{r[0]}</td><td>{r[1]}</td></tr>)}</tbody>
             </table>
-            <table className="grid ref">
+            <table className="bx ref">
               <thead><tr><th colSpan={3}>PERDIDA CARACTERISTICAS</th></tr><tr><th>D6</th><th>Resultado</th><th>Efecto</th></tr></thead>
               <tbody>{[["1-2","Herida en la cabeza","-1 AR"],["3","Menisco Destrozado","-1 MO"],["4","Brazo Fracturado","-1 PA"],["5","Herida en el Cuello","-1 AG"],["6","Hombro Dislocado","-1 FU"]].map(r=><tr key={r[0]}><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody>
             </table>
           </div>
-          <table className="grid ref txt clima-t">
+          <table className="bx ref txt clima-t">
             <thead><tr><th>2D6</th><th>CLIMA</th></tr></thead>
             <tbody>
               <tr><td>2</td><td><b>Calor asfixiante</b>: 1d3 jugadores pasan a reserva y no pueden pueden jugar la siguiente entrada.</td></tr>
@@ -150,7 +150,7 @@ const MatchActPdf = () => {
           </table>
         </div>
 
-        <table className="grid ref txt kick">
+        <table className="bx ref txt kick">
           <thead><tr><th>2D6</th><th>PATADA INICIAL</th></tr></thead>
           <tbody>
             <tr><td>2</td><td><b>A por el Árbitro</b>: Cada equipo recibe un soborno adicional para ser usado durante el partido. El soborno podrá usarse para evitar la expulsión tras una falta o usar armas secretas. Tira 1D6: 2-6 el soborno hará efecto, 1 no y se podrá volver a protestar.</td></tr>
@@ -167,7 +167,7 @@ const MatchActPdf = () => {
           </tbody>
         </table>
 
-        <table className="grid ref txt seq">
+        <table className="bx ref txt seq">
           <thead><tr><th colSpan={2}>SECUENCIA</th></tr></thead>
           <tbody>
             <tr><td>1</td><td><b>Fan Factor</b>: 1D3 + Fans Dedicados</td></tr>
@@ -198,8 +198,8 @@ html, body { background: #fff; }
 .acta .th-box { flex: 1; }
 .acta .th-name { text-align: center; font-weight: bold; font-size: 10pt; margin-bottom: 2px; }
 .acta .title { text-align: center; font-weight: bold; font-size: 13pt; line-height: 1.15; margin-top: 2mm; }
-.acta table.grid { border-collapse: collapse; }
-.acta table.grid td, .acta table.grid th { border: 1px solid #000; padding: 1px 2px; vertical-align: top; }
+.acta table.bx { border-collapse: collapse; }
+.acta table.bx td, .acta table.bx th { border: 1px solid #000; padding: 1px 2px; vertical-align: top; }
 .acta .hdr { width: 100%; } .acta .hdr td { text-align: center; height: 11px; font-size: 7pt; }
 .acta .metarow { display: flex; justify-content: space-between; align-items: flex-end; margin: 4px 0 2px; }
 .acta .m-l { width: 100mm; text-align: right; white-space: nowrap; } .acta .m-r { white-space: nowrap; } .acta .m-r { width: 98mm; }
