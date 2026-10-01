@@ -97,17 +97,12 @@ const MatchActPdf = () => {
       </div>
 
       <table className="grid main">
-        <colgroup>
-          <col style={{ width: 18 }} /><col style={{ width: 120 }} /><col style={{ width: 46 }} /><col style={{ width: 190 }} />
-          {Array.from({ length: 16 }).map((_, i) => <col key={i} style={{ width: 25 }} />)}
-          <col style={{ width: 18 }} /><col style={{ width: 120 }} /><col style={{ width: 46 }} /><col style={{ width: 190 }} />
-        </colgroup>
         <thead>
           <tr>
-            <th>N</th><th>NOMBRE<br />(POS)</th><th /><th>HABILIDADES</th>
-            {statCols.map(c => <th key={"l" + c}>{c}</th>)}<th className="sep-r">HER.<br />REC</th>
-            {statCols.map(c => <th key={"r" + c}>{c}</th>)}<th>HER.<br />REC</th>
-            <th>N</th><th>NOMBRE<br />(POS)</th><th /><th>HABILIDADES</th>
+            <th className="w-n">N</th><th className="w-nm">NOMBRE<br />(POS)</th><th className="w-st" /><th className="w-sk">HABILIDADES</th>
+            {statCols.map(c => <th key={"l" + c} className="w-x">{c}</th>)}<th className="sep-r w-x">HER.<br />REC</th>
+            {statCols.map(c => <th key={"r" + c} className="w-x">{c}</th>)}<th className="w-x">HER.<br />REC</th>
+            <th className="w-n">N</th><th className="w-nm">NOMBRE<br />(POS)</th><th className="w-st" /><th className="w-sk">HABILIDADES</th>
           </tr>
         </thead>
         <tbody>
@@ -198,6 +193,7 @@ html, body { background: #fff; }
 .acta .top { display: flex; justify-content: space-between; align-items: flex-start; }
 .acta .th { display: flex; align-items: center; gap: 6px; width: 105mm; }
 .acta .th-l { margin-left: 2mm; } .acta .th-r { margin-right: 2mm; }
+.acta .th .logo { display:block; }
 .acta .logo { width: 15mm; height: 13mm; object-fit: contain; }
 .acta .th-box { flex: 1; }
 .acta .th-name { text-align: center; font-weight: bold; font-size: 10pt; margin-bottom: 2px; }
@@ -206,12 +202,14 @@ html, body { background: #fff; }
 .acta table.grid td, .acta table.grid th { border: 1px solid #000; padding: 1px 2px; vertical-align: top; }
 .acta .hdr { width: 100%; } .acta .hdr td { text-align: center; height: 11px; font-size: 7pt; }
 .acta .metarow { display: flex; justify-content: space-between; align-items: flex-end; margin: 4px 0 2px; }
-.acta .m-l { width: 100mm; text-align: right; } .acta .m-r { width: 98mm; }
+.acta .m-l { width: 100mm; text-align: right; white-space: nowrap; } .acta .m-r { white-space: nowrap; } .acta .m-r { width: 98mm; }
 .acta .meta img { height: 11px; vertical-align: middle; margin: 0 1px; }
 .acta .clima { padding-top: 8px; }
 .acta .main { width: 100%; table-layout: fixed; font-size: 7.2pt; }
 .acta .main th { font-weight: normal; text-align: center; }
-.acta .main td { height: 28px; }
+.acta .main td { height: 25px; line-height: 1.1; }
+.acta .main .w-n { width: 2.2%; } .acta .main .w-nm { width: 10%; } .acta .main .w-st { width: 4.6%; } .acta .main .w-sk { width: 16.6%; } .acta .main .w-x { width: 2.1%; padding: 1px 0; font-size: 6.4pt; }
+.acta img { display: inline-block; }
 .acta .main td.c { text-align: center; }
 .acta .main td.sk { line-height: 1.15; }
 .acta .main .sep-r { border-right: 3px double #000; }
